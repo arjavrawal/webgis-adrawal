@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Title</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>World Wide WebGIS</h1>
+    <div class="station-card">
+        <h3>Phoenix Sky Harbor (PHX)</h3>
+        <p>33.43° N, 112.01° W. 114°F with an Extreme Heat Warning in effect.</p>
+    </div>
+    <br>
+    <div class="station-card">
+        <h3>Los Angeles (LAX)</h3>
+        <p>33.94° N, 118.41° W. 85°F with a Heat Advisory in effect.</p>
+    </div>
+    <br>
+    <div>
+        <h1>United States</h1>
+        <h2>Arizona</h2>
+        <h3>Maricopa County</h3>
+        <h4>Tempe</h4>
+        <h5>ASU Tempe Campus</h5>
+        <h6>Coor Hall</h6>
+        <p>Coor Hall is where GIS 494/598 meets in room 5505.</p>
+        <p>Phoenix City Hall<br>
+            200 W Washington St<br>
+            Phoenix, AZ 85003</p>
+        <p>The pre tag keeps every space and line break:</p>
+        <pre>
+            {
+                "type": "Feature",
+                "geometry": {
+                    "type": "Point",
+                    "coordinates": [-112.0740, 33.4484]
+                },
+                "properties": {
+                    "name": "Phoenix City Hall"
+                }
+            }
+        </pre>
+    </div>
+    <h3>Using the Shade Finder Map</h3>
+    <!-- This is a comment. -->
+     <ol>
+        <li>Turn on a layer:
+            <ul style="list-style-type:square;">
+                <li><strong>Cooling Centers</strong></li>
+                <li>Hydration Stations</li>
+            </ul>
+        </li>
+        <li>Click on a point to see its hours.</li>
+        <li>Hours change in the summer, so <em>call ahead</em>.</li>
+     </ol>
+    <div>
+        <a href="https://www.openstreetmap.com/#map=12/33.4484/-112.0740">
+            <img src="https://tile.openstreetmap.org/12/772/1643.png">
+        </a>
+        <p>Map tile: OpenStreetMap contributors</p>
+    </div>
+    <h2>Mapathon Sign-Up</h2>
+    <form>
+    <p><label>Name <input type="text" name="name"></label></p>
+    <p><label>Hours you can map <input type="number" name="hours"></label></p>
+    <p>Mapped before?
+        <label><input type="radio" name="before" value="yes"> Yes</label>
+        <label><input type="radio" name="before" value="no"> No</label>
+    </p>
+    <p><label><input type="checkbox" name="osm"> I have an OpenStreetMap account</label></p>
+    <p><label>City
+        <select name="city">
+            <option value="tempe">Tempe</option>
+            <option value="phoenix">Phoenix</option>
+            <option value="mesa">Mesa</option>
+        </select>
+    </label></p>
+    <p><label>What should we map?<br>
+    <textarea name="ideas"></textarea></label></p>
+    <button type="submit">Sign up</button>
+    </form>
+    <h1 style="color: teal; margin-left:20px;">Phoenix</h1>
+    <p>Summer highs often climb past 110°F.</p>
+    <h1>Grand Canyon</h1>
+    <p>The Colorado River carved it over millions of years.</p>
+    <br>
+    <h1 id="page-title">Arizona Parks</h1>
+    <ul id="park-list">
+        <li class="park">Grand Canyon</li>
+        <li class="park">Saguaro</li>
+        <li class="park">Petrified Forest</li>
+        <li class="monument">Montezuma Castle</li>
+    </ul>
+    <p>Plan a trip with the <a href="https://www.nps.gov">National Park Service</a>.</p>
+    <p>Here is a map of Downtown Phoenix:</p>
+    <iframe
+        title="Downtown Phoenix on OSM"
+        src="https://www.openstreetmap.org/export/embed.html?bbox=-112.0740%2C33.4484%2C-112.0740%2C33.4484&amp;layer=mapnik"
+        style="border: 1px solid black; width: 100%; height: 400px;">
+    </iframe>
+    <script src="script.js"></script>
+</body>
+</html>
