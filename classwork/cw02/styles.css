@@ -5,8 +5,10 @@ body {
 main {
     display: flex; flex: 1; overflow: hidden;
 }
+/*! This is the header section which includes the parameters for how to set up the image/logo, title, and navigation for the overall webpage. */
 header {
-    background: #8C1D40; color: white; padding: 16px 20px;
+    background: #21775a; color: white; padding: 16px 20px;
+    display: flex; align-items: center; justify-content: space-between;
 }
 header nav a {
     color: #FFC627; margin-left: 16px; text-decoration: none;

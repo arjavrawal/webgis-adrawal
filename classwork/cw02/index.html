@@ -3,26 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Valley Biking Map</title>
+    <link rel="icon" type="image/x-icon" href="https://www.phoenix.gov/adobe/dynamicmedia/deliver/dm-aid--10173c91-8fa4-4d2a-9dbf-db468dfc7db4/profile-00-city.jpg" alt="Phoenix Logo">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
-        <h1>Phoenix Shade Finder</h1>
+        <img src="https://www.phoenix.gov/adobe/dynamicmedia/deliver/dm-aid--10173c91-8fa4-4d2a-9dbf-db468dfc7db4/profile-00-city.jpg" alt="Phoenix Logo" width="50" height="50">
+        <h1>Valley Biking Map</h1>
         <nav><a href="#">Map</a> <a href="#">About</a></nav>
     </header>
     <main>
+        <!-- This is the main content area which includes the sidebar and the map -->
         <aside class="sidebar">
             <h2>Layers</h2>
-            <label><input type="checkbox" checked>Cooling Centers</label><br>
-            <label><input type="checkbox">Shade Structures</label><br>
-            <label><input type="checkbox">Bus Stops</label><br>
+            <label><input type="checkbox" checked>National Bike Route</label><br>
+            <label><input type="checkbox">Regional Bike Route</label><br>
+            <label><input type="checkbox">Local Bike Route</label><br>
         </aside>
         <div class="map-wrapper">
-            <div id="map"><iframe width="100%" height="100%" src="https://www.openstreetmap.org/export/embed?bbox=-79.81842041015626%2C42.954301577234325%2C-76.30828857421876%2C44.523818648410966&amp;layer=mapnik" style="border: 1px solid black"></iframe><br/></div>
+            <div id="map"><iframe width="100%" height="100%" src="https://www.openstreetmap.org/export/embed?bbox=-113.11111450195314%2C33.035214992524644%2C-111.35604858398439%2C33.94114875653919&amp;layer=cyclemap" style="border: 1px solid black"></iframe><br/></div>
             <button class="map-control">Locate me</button>
         </div>
     </main>
-    <footer><p>GIS 494/598 - Phoenix Shade Finder</p></footer>
+    <footer><p>GIS 494/598 - Valley Biking Map</p><small>Source: <a href="https://www.openstreetmap.org/#map=10/33.4893/-112.2336&amp;layers=C" target="_blank" rel="noopener noreferrer">OpenStreetMap</a></small></footer>
 </body>
 </html>
