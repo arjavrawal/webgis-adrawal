@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valley Biking Map</title>
+    <link rel="icon" type="image/x-icon" href="https://www.phoenix.gov/adobe/dynamicmedia/deliver/dm-aid--10173c91-8fa4-4d2a-9dbf-db468dfc7db4/profile-00-city.jpg" alt="Phoenix Logo">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <script src="js/app.js" defer></script>
+</head>
+<body>
+    <header>
+        <img src="https://www.phoenix.gov/adobe/dynamicmedia/deliver/dm-aid--10173c91-8fa4-4d2a-9dbf-db468dfc7db4/profile-00-city.jpg" alt="Phoenix Logo" width="50" height="50">
+        <h1>Valley Biking Map</h1>
+        <nav><a href="#locate">Locate Me</a> <a href="#">About</a></nav>
+    </header>
+    <main>
+        <!-- This is the main content area which includes the sidebar and the map -->
+        <aside class="sidebar">
+            <h2>Layers</h2>
+            <label><input type="checkbox" checked>National Bike Route</label><br>
+            <label><input type="checkbox">Regional Bike Route</label><br>
+            <label><input type="checkbox">Local Bike Route</label><br>
+        </aside>
+        <div class="map-wrapper">
+            <button id="locate" class="map-control">Locate me</button>
+            <div id="map">MAP GOES HERE</div>
+        </div>
+    </main>
+    <footer><p>GIS 494/598 - Valley Biking Map</p><small>Source: <a href="https://www.openstreetmap.org/#map=10/33.4893/-112.2336&amp;layers=C" target="_blank" rel="noopener noreferrer">OpenStreetMap</a></small></footer>
+</body>
+</html>
