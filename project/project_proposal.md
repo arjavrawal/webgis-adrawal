@@ -2,6 +2,15 @@
 HomeScope Tempe: Explore Housing. Understand Neighborhoods.
 An Interactive WebGIS Dashboard for Housing Affordability and Neighborhood Exploration in Tempe, Arizona
 
+## Team Members
+
+| Team Member | Course Level | Role |
+|-------------|--------------|------|
+| Nikita Soni | GIS 598 | Frontend UI Designer, Data Collector, Meeting Organizer |
+| Farhan Abbas | GIS 598 | Frontend Developer |
+| Arjav Rawal | GIS 494 | Backend Developer, Data Processor |
+| Nathan DeJonge | GIS 494 | Backend Developer |
+
 ## Problem statement:
 
 ### The problem:
@@ -11,7 +20,7 @@ People looking for housing in Tempe often need to compare neighborhoods based on
 People interested in moving to Tempe, regardless of whether they are students, families, or other residents, are the intended users of this dashboard. Anyone who is looking for housing-related information within Tempe can explore the dashboard and identify a census block group based on their housing budget, neighborhood characteristics, and preferences. 
 
 ### Why a WebGIS application is the right answer:
-A WebGIS housing dashboard for Tempe brings this information together in one place. Users can explore the map, turn different layers on and off, apply filters, and compare areas based on their own preferences. For example, a student may be looking for lower rent, nearby grocery stores, and good transit access, while a family may be more interested in housing prices, schools, parks, and homeownership patterns. A WebGIS housing dashboard for Tempe brings this information together in one place. Users can explore the map, turn different layers on and off, apply filters, and compare areas based on their own preferences. For example, a student may be looking for lower rent, nearby grocery stores, and good transit access, while a family may be more interested in housing prices, schools, parks, and homeownership patterns. WebGIS is a useful approach for combining housing and demographic data with spatial information about nearby facilities, allowing users to explore and compare census block groups through an interactive map. 
+A WebGIS housing dashboard for Tempe brings this information together in one place. Users can explore the map, turn different layers on and off, apply filters, and compare areas based on their own preferences. For example, a student may be looking for lower rent, nearby grocery stores, and good transit access, while a family may be more interested in housing prices, schools, parks, and homeownership patterns. WebGIS is a useful approach for combining housing and demographic data with spatial information about nearby facilities, allowing users to explore and compare census block groups through an interactive map. 
 
 ### Functional requirements:
 
@@ -22,7 +31,9 @@ The HomeScope Tempe  dashboard will allow users to explore and compare census bl
 4. Nearby amenities: The panel should show how many transit stops, schools, grocery stores, and hospitals are located within a one-mile radius of the selected block group's centroid.
 5. Map layers: Users should be able to turn different amenity layers on and off to explore nearby facilities.
 
+
 ### Wireframes:
+Note: Depending on data availability, technological difficulties, and design considerations, this wireframe, which shows the initial dashboard layout, may vary during development. The Capstone Milestone Prototype will include any required modifications. 
 
 ![wireframe photo](wireframe.jpeg)
 
