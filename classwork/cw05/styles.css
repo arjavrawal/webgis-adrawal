@@ -34,3 +34,6 @@ footer {
     .sidebar {width: 100%; max-height: 200px; border-right: none; border-bottom: 1px solid #ccc;}
     .map-wrapper {flex: none; height: 400px;}
 }
+.count-box {
+    background: white; padding: 6px 10px;
+}

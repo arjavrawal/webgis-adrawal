@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cool Corridors | Shaded routes to cooling centers in Tempe</title>
+  <meta name="description" content="Volunteers mapping shaded walking routes between bus stops and cooling centers in Tempe, Arizona.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <a class="brand" href="index.html">
+      <img src="images/logo.svg" alt="Cool Corridors logo, a tree shading a sun" width="48" height="48">
+      <span>Cool Corridors</span>
+    </a>
+    <nav aria-label="Main">
+      <a href="index.html" aria-current="page">Home</a>
+      <a href="map.html">Map</a>
+      <a href="#signup">Sign up</a>
+    </nav>
+  </header>
+
+  <main>
+    <section id="about">
+      <h1>Shade is infrastructure.</h1>
+      <p class="lead">Cool Corridors is a volunteer group in Tempe. Every summer we walk the routes people actually use between bus stops and cooling centers, and we record where the shade is and where it isn't.</p>
+      <!-- Mark asked for the banner at 900 wide, so the width and height stay in the HTML to reserve its space while it loads; the CSS img rule shrinks it on Dev's phone. -->
+      <img class="banner" src="images/banner.svg" alt="Sketch of a street with a bus stop, a row of trees and a public library at the end" width="900" height="300">
+      <p>Our maps go to the city's shade planners, to the cooling centers, and to anyone who has to make that walk at three in the afternoon in July.</p>
+    </section>
+
+    <section id="routes">
+      <h2>This summer's routes</h2>
+      <div class="routes">
+        <article class="card">
+          <h3>Library Loop</h3>
+          <p class="meta">1.4 miles &middot; <span class="badge">62% shaded</span></p>
+          <p>Tempe Transportation Center to Tempe Public Library along the Southern Avenue tree line.</p>
+        </article>
+        <article class="card">
+          <h3>Apache Line</h3>
+          <p class="meta">1.1 miles &middot; <span class="badge">38% shaded</span></p>
+          <p>Streetcar stops on Apache Boulevard to Escalante Community Center. The long gap is by the car lots.</p>
+        </article>
+        <article class="card">
+          <h3>Mill Avenue Walk</h3>
+          <p class="meta">0.9 miles &middot; <span class="badge">71% shaded</span></p>
+          <p>Tempe Beach Park to the downtown stops. Awnings do most of the work here.</p>
+        </article>
+        <article class="card">
+          <h3>McClintock Crossing</h3>
+          <p class="meta">1.6 miles &middot; <span class="badge">29% shaded</span></p>
+          <p>The McClintock and Southern stop to Kiwanis Recreation Center. Our hottest route and the one we most want fixed.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="schedule">
+      <h2>Walk schedule</h2>
+      <p>Walks start at the bus stop listed. Bring water. We stop at every shade gap to measure it.</p>
+      <div class="table-wrap">
+        <table class="schedule">
+          <caption>Weekly walks, June through September</caption>
+          <thead>
+            <tr>
+              <th scope="col">Route</th>
+              <th scope="col">Day</th>
+              <th scope="col">Start</th>
+              <th scope="col">Meet at</th>
+              <th scope="col">Leader</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Library Loop</td><td>Monday</td><td>7:00 am</td><td>Tempe Transportation Center, bay 3</td><td>Marisol</td></tr>
+            <tr><td>Apache Line</td><td>Tuesday</td><td>7:00 am</td><td>Apache and Rural streetcar stop</td><td>Dev</td></tr>
+            <tr><td>Mill Avenue Walk</td><td>Thursday</td><td>6:30 pm</td><td>Tempe Beach Park entrance</td><td>Priya</td></tr>
+            <tr><td>McClintock Crossing</td><td>Saturday</td><td>6:30 am</td><td>McClintock and Southern, northbound stop</td><td>Tomas</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="signup">
+      <h2>Walk with us</h2>
+      <form>
+        <div class="field">
+          <label for="name">Name</label>
+          <input id="name" name="name" type="text" autocomplete="name" required>
+        </div>
+        <div class="field">
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" autocomplete="email" required>
+        </div>
+        <div class="field">
+          <label for="phone">Phone (optional)</label>
+          <input id="phone" name="phone" type="tel" autocomplete="tel">
+        </div>
+        <div class="field">
+          <label for="route">Preferred route</label>
+          <select id="route" name="route">
+            <option value="">Any route</option>
+            <option value="library">Library Loop</option>
+            <option value="apache">Apache Line</option>
+            <option value="mill">Mill Avenue Walk</option>
+            <option value="mcclintock">McClintock Crossing</option>
+          </select>
+        </div>
+        <fieldset>
+          <legend>Days you can walk</legend>
+          <label><input type="checkbox" name="days" value="mon"> Monday</label>
+          <label><input type="checkbox" name="days" value="tue"> Tuesday</label>
+          <label><input type="checkbox" name="days" value="thu"> Thursday</label>
+          <label><input type="checkbox" name="days" value="sat"> Saturday</label>
+        </fieldset>
+        <fieldset>
+          <legend>Have you walked with us before?</legend>
+          <label><input type="radio" name="before" value="yes"> Yes</label>
+          <label><input type="radio" name="before" value="no" checked> No</label>
+        </fieldset>
+        <div class="field">
+          <label for="notes">Anything we should know?</label>
+          <textarea id="notes" name="notes" rows="4"></textarea>
+        </div>
+        <button type="submit">Sign up</button>
+        <button type="reset">Clear</button>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <p>Cool Corridors is a volunteer project, not an emergency service.</p>
+    <h2>Data sources</h2>
+    <ul>
+      <li><a href="https://www.openstreetmap.org/">OpenStreetMap contributors</a>, base map</li>
+      <li><a href="https://hrn.azmag.gov/">Heat Relief Network</a>, cooling center locations</li>
+      <li>Shade measurements by Cool Corridors volunteers</li>
+    </ul>
+  </footer>
+</body>
+</html>

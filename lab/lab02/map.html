@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cool Corridors | Map</title>
+  <meta name="description" content="Volunteers mapping shaded walking routes between bus stops and cooling centers in Tempe, Arizona.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="app">
+  <header>
+    <a class="brand" href="index.html">
+      <img src="images/logo.svg" alt="Cool Corridors logo, a tree shading a sun" width="48" height="48">
+      <span>Cool Corridors</span>
+    </a>
+    <nav aria-label="Main">
+      <a href="index.html">Home</a>
+      <a href="map.html" aria-current="page">Map</a>
+      <a href="index.html#signup">Sign up</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- The sidebar and map share one flex row; on phones the sidebar stacks above the map. -->
+    <aside class="sidebar">
+      <h2>Layers</h2>
+      <label><input type="checkbox" checked> Shaded routes</label>
+      <label><input type="checkbox" checked> Cooling centers</label>
+      <label><input type="checkbox"> Bus stops</label>
+      <h2>Legend</h2>
+      <p><span class="badge">62% shaded</span> is the share of the route under shade at 3 pm.</p>
+    </aside>
+    <div class="map-wrapper">
+      <div id="map">MAP GOES HERE</div>
+      <button class="map-control" type="button">Locate me</button>
+    </div>
+  </main>
+
+  <footer>
+    <p>Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap contributors</a>. Cooling centers from the <a href="https://hrn.azmag.gov/">Heat Relief Network</a>.</p>
+  </footer>
+</body>
+</html>

@@ -20,9 +20,10 @@
         <!-- This is the main content area which includes the sidebar and the map -->
         <aside class="sidebar">
             <h2>Layers</h2>
-            <label><input type="checkbox" checked>National Bike Route</label><br>
-            <label><input type="checkbox">Regional Bike Route</label><br>
-            <label><input type="checkbox">Local Bike Route</label><br>
+            <label><input type="checkbox" data-layer="centers" checked> Cooling Centers</label><br>
+            <label><input type="checkbox" data-layer="hydration"> Hydration Stations</label><br>
+            <label><input type="checkbox" data-layer="cities"> Cities</label><br>
+            <label><input type="checkbox" data-layer="rail"> Rail Stations</label><br>
         </aside>
         <div class="map-wrapper">
             <button id="locate" class="map-control">Locate me</button>

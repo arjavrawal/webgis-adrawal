@@ -1,0 +1,157 @@
+/* ==========================================================
+   Cool Corridors shared stylesheet (index.html + map.html)
+   Rule: no color is typed anywhere except inside :root.
+   ========================================================== */
+
+/* Brand kit: the designer's values, named so Mark can read them */
+:root {
+  --shade:   #1b4332;   /* header, headings, buttons */
+  --leaf:    #74c69d;   /* badges and accents */
+  --sun:     #ffb703;   /* nav links, focus rings on dark */
+  --asphalt: #2b2d42;   /* body text */
+  --sand:    #fdf6e3;   /* page background */
+  --paper:   #ffffff;   /* cards, table, form */
+  --line:    #d9d2c0;   /* borders */
+  --glow:    rgba(0, 0, 0, 0.25);   /* current/hovered nav link on the dark header */
+
+  /* Map page only: these leave with the placeholder when the real map arrives */
+  --placeholder:      #dfe9f3;
+  --placeholder-text: #5b6472;
+
+  --font-body: system-ui, "Segoe UI", Roboto, Arial, sans-serif;
+  --font-head: Georgia, "Times New Roman", serif;
+  --space: 1rem;
+  --radius: 6px;
+  --tap: 44px;          /* the smallest thing a thumb can hit */
+}
+
+/* Reset */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+/* Phone fix: the 900px banner never pushes the page wider than the screen */
+img { max-width: 100%; height: auto; }
+
+/* Type */
+body {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--asphalt);
+  background: var(--sand);
+}
+h1, h2, h3 { font-family: var(--font-head); line-height: 1.2; color: var(--shade); }
+h1 { font-size: clamp(1.8rem, 4vw, 2.6rem); margin-bottom: .5rem; }
+h2 { font-size: 1.5rem; margin-bottom: .5rem; }
+h3 { font-size: 1.15rem; }
+p, li { max-width: 65ch; }
+p { margin-bottom: var(--space); }
+.lead { font-size: 1.15rem; }
+a { color: var(--shade); text-decoration-thickness: 2px; text-underline-offset: 3px; }
+a:hover { text-decoration-color: var(--sun); }
+
+/* Focus: the ring stays visible for keyboard users; it is never removed */
+:focus-visible { outline: 3px solid var(--shade); outline-offset: 2px; }
+header :focus-visible, footer :focus-visible { outline-color: var(--sun); }
+
+/* Header and nav */
+header {
+  background: var(--shade);
+  color: var(--paper);
+  padding: var(--space) calc(var(--space) * 1.5);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space);
+}
+.brand { display: flex; align-items: center; gap: .75rem; color: var(--paper); text-decoration: none; }
+.brand img { width: 48px; height: 48px; }
+.brand span { font-family: var(--font-head); font-size: 1.4rem; }
+nav { display: flex; flex-wrap: wrap; gap: .25rem; }
+nav a {
+  color: var(--sun);
+  text-decoration: none;
+  padding: .6rem .9rem;
+  min-height: var(--tap);
+  display: inline-flex;
+  align-items: center;
+  border-radius: var(--radius);
+}
+nav a:hover, nav a[aria-current="page"] { background: var(--glow); }
+
+/* Main */
+main { max-width: 1100px; margin: 0 auto; padding: calc(var(--space) * 2) var(--space); }
+section { margin-bottom: calc(var(--space) * 2.5); }
+.banner { display: block; margin: var(--space) 0; }
+
+/* Route cards: one line of grid, rewraps with no media query */
+.routes { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 1.25rem; }
+.card { background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); padding: var(--space); }
+.card h3 { margin-bottom: .25rem; }
+.card .meta { color: var(--shade); font-weight: 600; margin-bottom: .5rem; }
+.card p:last-child { margin-bottom: 0; }
+.badge { display: inline-block; background: var(--leaf); color: var(--shade); padding: .1rem .55rem; border-radius: 999px; font-size: .85rem; }
+
+/* Schedule table */
+.table-wrap { overflow-x: auto; }
+.schedule { width: 100%; border-collapse: collapse; background: var(--paper); }
+.schedule caption { text-align: left; font-weight: 600; padding: .5rem 0; }
+.schedule th { background: var(--shade); color: var(--paper); text-align: left; }
+.schedule th, .schedule td { padding: .6rem .75rem; border-bottom: 1px solid var(--line); }
+.schedule tbody tr:nth-child(even) { background: var(--sand); }
+
+/* Sign-up form */
+form { background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); padding: calc(var(--space) * 1.5); max-width: 640px; }
+.field { margin-bottom: var(--space); }
+label { display: block; font-weight: 600; margin-bottom: .3rem; }
+input, select, textarea {
+  width: 100%;
+  font: inherit;
+  padding: .6rem .7rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  min-height: var(--tap);
+}
+textarea { min-height: 7rem; }
+input[type="checkbox"], input[type="radio"] { width: auto; min-height: 0; accent-color: var(--shade); }
+fieldset { border: 1px solid var(--line); border-radius: var(--radius); padding: var(--space); margin-bottom: var(--space); }
+legend { font-weight: 600; padding: 0 .4rem; }
+fieldset label { display: flex; align-items: center; gap: .6rem; font-weight: 400; min-height: var(--tap); margin: 0; }
+button {
+  font: inherit;
+  min-height: var(--tap);
+  padding: .6rem 1.2rem;
+  border: 0;
+  border-radius: var(--radius);
+  background: var(--shade);
+  color: var(--paper);
+  cursor: pointer;
+  margin-right: .5rem;
+}
+button[type="reset"] { background: transparent; color: var(--shade); border: 2px solid var(--shade); }
+
+/* Footer */
+footer { background: var(--shade); color: var(--paper); padding: calc(var(--space) * 1.5); }
+footer h2 { color: var(--paper); font-size: 1.1rem; }
+footer a { color: var(--sun); }
+footer ul { list-style: none; }
+
+/* ==========================================================
+   Map page layout (Classwork 2), scoped to body.app only
+   ========================================================== */
+body.app { height: 100dvh; display: flex; flex-direction: column; }
+.app main { max-width: none; margin: 0; padding: 0; display: flex; flex: 1; overflow: hidden; }
+.app .sidebar { width: 300px; background: var(--paper); padding: var(--space); overflow-y: auto; border-right: 1px solid var(--line); }
+.app .sidebar h2 { font-size: 1.1rem; margin-top: var(--space); }
+.app .sidebar label { display: flex; align-items: center; gap: .6rem; font-weight: 400; min-height: var(--tap); margin: 0; }
+.app .map-wrapper { flex: 1; position: relative; }
+.app #map { width: 100%; height: 100%; background: var(--placeholder); display: grid; place-items: center; color: var(--placeholder-text); }
+.app .map-control { position: absolute; top: 16px; right: 16px; z-index: 100; }
+.app footer { padding: .5rem var(--space); font-size: .85rem; }
+.app footer p { margin: 0; max-width: none; }
+
+@media (max-width: 767px) {
+  .app main { flex-direction: column; }
+  .app .sidebar { width: 100%; max-height: 200px; border-right: 0; border-bottom: 1px solid var(--line); }
+  .app .map-wrapper { flex: none; height: 55dvh; }
+}
