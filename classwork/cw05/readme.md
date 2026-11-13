@@ -1,5 +1,5 @@
-## Classwork 05: Leafmap
-## Arjav Rawal
-Built a basic webpage embedding OSM's CycleMap layer to show the bike routes in the Valley, based on the initial example of the Phoenix Shade Finder.
+# Classwork 05: Shade Finder Gets Its Map
+**Arjav Rawal**
 
-The rule that broke my map was #2 - removing the height rule from the map was what made the map class smaller than the map wrapper itself, and breaking the map wrapper does not actually change anything.
+Put a Leaflet map into the Valley Biking Map page, with OpenStreetMap and USGS Topo basemaps, a Locate me button, and a box that counts the sites in view.
+It loads cooling centers, clustered hydration stations, rail stops and a city population choropleth from GeoJSON I exported out of PostGIS, with popups, click-to-select and a legend.

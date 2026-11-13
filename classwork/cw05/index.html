@@ -4,10 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Valley Biking Map</title>
-    <link rel="icon" type="image/x-icon" href="https://www.phoenix.gov/adobe/dynamicmedia/deliver/dm-aid--10173c91-8fa4-4d2a-9dbf-db468dfc7db4/profile-00-city.jpg" alt="Phoenix Logo">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/x-icon" href="https://www.phoenix.gov/adobe/dynamicmedia/deliver/dm-aid--10173c91-8fa4-4d2a-9dbf-db468dfc7db4/profile-00-city.jpg">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css" />
+    <script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
+    <link rel="stylesheet" href="style.css">
     <script src="js/app.js" defer></script>
 </head>
 <body>
@@ -22,14 +25,14 @@
             <h2>Layers</h2>
             <label><input type="checkbox" data-layer="centers" checked> Cooling centers</label><br>
             <label><input type="checkbox" data-layer="hydration"> Hydration stations</label><br>
+            <label><input type="checkbox" data-layer="stops"> Rail stops</label><br>
             <label><input type="checkbox" data-layer="cities"> Cities</label><br>
-            <label><input type="checkbox" data-layer="rail"> Rail stops</label><br>
             <h2>Selected</h2>
-            <p id="selected">Click a site.</p>
+            <p id="selected"></p>
         </aside>
         <div class="map-wrapper">
             <button id="locate" class="map-control">Locate me</button>
-            <div id="map">MAP GOES HERE</div>
+            <div id="map"></div>
         </div>
     </main>
     <footer><p>GIS 494/598 - Valley Biking Map</p><small>Source: <a href="https://www.openstreetmap.org/#map=10/33.4893/-112.2336&amp;layers=C" target="_blank" rel="noopener noreferrer">OpenStreetMap</a></small></footer>
