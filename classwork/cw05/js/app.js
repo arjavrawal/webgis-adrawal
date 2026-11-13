@@ -13,6 +13,13 @@ const osm = L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
     maxZoom: 19,
     attribution: "&copy; OpenStreetMap contributors"
 }).addTo(map);
+const usgs = L.tileLayer.wms(
+    "https://basemap.nationalmap.gov/arcgis/services/" + "USGSTopo/MapServer/WMSServer", {
+        layers: "0", format: "image/png", attribution: "USGS The National Map"
+    }
+);
+const basemaps = {"OpenStreetMap": osm, "USGS Topo": usgs};
+L.control.layers(basemaps, null, {position: "topleft"}).addTo(map);
 L.marker([33.4242, -111.9281]).addTo(map).bindPopup("ASU Tempe campus").openPopup();
 L.marker([33.42612069892929, -111.93593754570156]).addTo(map).bindPopup("Tempe Transit Center").openPopup();
 L.circle([33.4242, -111.9281], {radius: 400, color: "#f1a340"}).addTo(map);
@@ -20,11 +27,11 @@ L.polyline([[33.42,-111.94],[33.42,-111.92]],{weight:4}).addTo(map);
 L.polygon([[33.40,-111.95],[33.40,-111.90],[33.44,-111.90]], {fillOpacity:0.2}).addTo(map);
 map.on("click", e => console.log(e.latlng.lat.toFixed(5), e.latlng.lng.toFixed(5)));
 map.on("moveend", () => console.log("zoom", map.getZoom()));
-L.Control.layers(basemaps, null, {position: "topleft"}).addTo(map);
-const centers = siteLayer(" Cooling Centers");
-const hydration = siteLayer(" Hydration Stations");
+const sites = L.geoJSON(null);
+const centers = siteLayer("Cooling Center");
+const hydration = siteLayer("Hydration Station");
 const cities = L.geoJSON(null, {
-    style: {color: "#f1a340", weight: 1, fillOpacity: 5.55}
+    style: {color: "#555", weight: 1, fillOpacity: 0.15}
 });
 const rail = L.geoJSON(null, {
     style: {color: "#f1a340", weight: 2, fillOpacity: 0.15}
@@ -36,17 +43,6 @@ for (const box of document.querySelectorAll("[data-layer]")) {
         if (box.checked) layer.addTo(map); else map.removeLayer(layer);
     });
 }
-async function start () {
-    const data = await (await fetch("data/cooling_centers.geojson")).json();
-    centers.addData(data);
-    hydration.addData(data);
-    const cityData = await (await fetch("data/cities.geojson")).json();
-    cities.addData(cityData);
-    const railData = await (await fetch("data/rail_stations.geojson")).json();
-    rail.addData(railData);
-    countInView();
-}
-start();
 const CountControl = L.Control.extend({
     onAdd: function () {
         this.box = L.DomUtil.create("div", "count-box");
@@ -61,19 +57,21 @@ const countControl = new CountControl({ position: "bottomleft" }).addTo(map);
 function countInView() {
     const bounds = map.getBounds();
     let n = 0;
-    centers.eachLayer(l => { if (bounds.contains(l.getLatLng())) n += 1; });
-    cities.eachLayer(l => { if (bounds.contains(l.getLatLng())) n += 1; });
-    rail.eachLayer(l => { if (bounds.contains(l.getLatLng())) n += 1; });
-    hydration.eachLayer(l => { if (bounds.contains(l.getLatLng())) n += 1; });
+    sites.eachLayer(l => { if (bounds.contains(l.getLatLng())) n += 1; });
     countControl.update(n);
 }
 map.on("moveend", countInView);
-const usgs = L.tileLayer.wms(
-    "https://basemap.nationalmap.gov/arcgis/services/" + "USGSTopo/MapServer/WMSServer", {
-        layers: "0", format: "image/png", attribution: "USGS The National Map"
-    }
-);
-const basemaps = {"OpenStreetMap": osm, "USGS Topo": usgs};
+async function start () {
+    const data = await (await fetch("data/cooling_centers.geojson")).json();
+    sites.addData(data); sites.addTo(map);
+    hydration.addData(data); hydration.addTo(map);
+    const cityData = await (await fetch("data/cities.geojson")).json();
+    cities.addData(cityData); cities.addTo(map);
+    const railData = await (await fetch("data/rail_stations.geojson")).json();
+    rail.addData(railData); rail.addTo(map);
+    countInView();
+}
+start();
 const waterIcon = L.icon({
     iconUrl: "img/water.png",
     iconSize: [30, 40],
@@ -84,8 +82,31 @@ const plainStyle = { radius: 6, color: "white", weight: 1, fillColor: "#2166ac",
 function siteLayer(kind) {
     return L.geoJSON(null, {
         filter: f => f.properties.kind == kind,
-        pointToLayer: (f, latlng) => kind == "Hydration Stations"
+        pointToLayer: (f, latlng) => kind == "Hydration Station"
         ? L.marker(latlng, {icon: waterIcon})
-        : L.circleMarker(latlng, plainStyle)
+        : L.circleMarker(latlng, plainStyle),
+        onEachFeature: (f, layer) => {
+            const p = f.properties;
+            layer.bindPopup(`${p.name}<br>${p.city}<br>` + `Wheelchair: ${p.wheelchair ?? "not reported"}`);
+            layer.on("click", e => {
+                if (current) highlight (current, false);
+                current = layer; highlight(layer, true);
+                document.querySelector("#selected").textContent = `${p.name} (${p.kind}, ${p.city})`;
+                L.DomEvent.stopPropagation(e);
+            });
+        }
     });
 }
+const selectedStyle = { radius: 9, color: "#8c1d40", weight: 3, fillColor: "#ffc627", fillOpacity: 1};
+const waterIconBig = L.icon({iconUrl: "img/water.png", iconSize: [42, 56], iconAnchor: [21, 56], popupAnchor: [0, -50] })
+let current = null;
+function highlight(layer, on) {
+    if (layer.setStyle) layer.setStyle(on ? selectedStyle : plainStyle);
+    else layer.setIcon(on ? waterIconBig : waterIcon);
+}
+
+map.on("click", () => {
+    if (current) highlight(current, false);
+    current = null;
+    document.querySelector("#selected").textContent = "Click a site.";
+});
