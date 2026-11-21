@@ -1,0 +1,31 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <title>Use an API Key</title>
+
+    <style>
+      html,
+      body {
+        background-color: var(--calcite-ui-foreground-2);
+        padding: 0;
+        margin: 0;
+        width: 100vw;
+        height: 100vh;
+      }
+    </style>
+    <script type="module" src="https://js.arcgis.com/calcite-components/3.3.3/calcite.esm.js"></script>
+    <script src="https://js.arcgis.com/4.34/"></script>
+    <script type="module" src="https://js.arcgis.com/4.34/map-components/"></script>
+    <!-- Sets window.ARCGIS_API_KEY when the git-ignored key file is present -->
+    <script src="arcgis-key.js"></script>
+  </head>
+  <body>
+    <arcgis-map basemap="topo-vector" zoom="13" center="-118.805, 34.027"></arcgis-map>
+    <script type="module">
+      const esriConfig = await $arcgis.import("@arcgis/core/config.js");
+      // esriConfig.apiKey = "YOUR_API_KEY";
+      if (window.ARCGIS_API_KEY) esriConfig.apiKey = window.ARCGIS_API_KEY;
+    </script>
+  </body>
+</html>

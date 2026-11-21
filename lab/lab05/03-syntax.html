@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <title>Legend component card style | Sample | ArcGIS Maps SDK for JavaScript</title>
+
+    <!-- Pulls in Calcite, Esri's design system. The map components get their buttons, panels and default look from it -->
+    <script type="module" src="https://js.arcgis.com/calcite-components/3.3.3/calcite.esm.js"></script>
+    <!-- Loads the SDK itself (version 4.34) from Esri's CDN so nothing has to be installed locally -->
+    <script src="https://js.arcgis.com/4.34/"></script>
+    <!-- Loads the map components package, which is what makes <arcgis-map> work in HTML -->
+    <script type="module" src="https://js.arcgis.com/4.34/map-components/"></script>
+    <!-- Sets window.ARCGIS_API_KEY when the git-ignored key file is present -->
+    <script src="arcgis-key.js"></script>
+
+    <!-- Sizes the map. Without a height the map component collapses to nothing, so it gets the full screen height (100vh) and the page loses its default margin. -->
+    <style>
+      html,
+      body {
+        margin: 0;
+      }
+
+      arcgis-map {
+        display: block;
+        height: 100vh;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- The map component, which draws the map on the page. Its attributes:
+         item-id  - the ArcGIS Online web map to open: municipalities in Mexico by predominant educational attainment
+         basemap  - the map underneath the data; gray-vector (Light Gray Canvas) is a named basemap that draws without a key
+         zoom     - how far in the map starts (8 is about a metro region)
+         center   - where the map starts, as longitude, latitude; here Mexico City -->
+    <arcgis-map item-id="10f5128431d44f9180d9936834100ac5" basemap="gray-vector" zoom="8" center="-99.17, 19.4">
+      <!-- The zoom component: plus and minus buttons in the top-left corner. Because it sits inside arcgis-map, it controls that map with no extra code. -->
+      <arcgis-zoom slot="top-left"></arcgis-zoom>
+      <!-- The legend component, also tied to the map by being nested in it. legend-style="card" stacks the legend into compact cards, and slot puts it in the bottom-left corner. -->
+      <arcgis-legend legend-style="card" slot="bottom-left"></arcgis-legend>
+    </arcgis-map>
+
+    <!-- Authenticates the app: imports the config module and would hand it an API key. -->
+    <script type="module">
+      const esriConfig = await $arcgis.import("@arcgis/core/config.js");
+      // esriConfig.apiKey = "YOUR_API_KEY";
+      if (window.ARCGIS_API_KEY) esriConfig.apiKey = window.ARCGIS_API_KEY;
+    </script>
+  </body>
+</html>
